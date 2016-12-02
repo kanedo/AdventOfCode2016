@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>AoC-Day2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>advent of code.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>10F6EA9D1DF1590500487BA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>10F6EAA81DF1597B00487BA5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
