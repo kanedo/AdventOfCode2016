@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AoC-Day1.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>advent of code.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>10F6EA8F1DF158F200487BA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>10F6EA9D1DF1590500487BA5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
