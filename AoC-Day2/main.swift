@@ -47,6 +47,52 @@ func decodeInstructions(input: [String]) -> [Int] {
   return code
 }
 
+func decodeInstructionsAlphaNumPad(input: [String]) -> [String] {
+  let numPad = [
+    ["x", "x", "1", "x", "x"],
+    ["x", "2", "3", "4", "x"],
+    ["5", "6", "7", "8", "9"],
+    ["x", "A", "B", "C", "x"],
+    ["x", "x", "D", "x", "x"]]
+  
+  let instructions = input.map({line in Array(line.characters)})
+  var code: [String] = []
+  var x = 2
+  var y = 0
+  
+  for instruction in instructions{
+    for move in instruction {
+      switch(move){
+      case "U":
+        if x > 0 && numPad[x-1][y] != "x" {
+          x -= 1
+        }
+        break
+      case "L":
+        if y > 0 && numPad[x][y-1] != "x"{
+          y -= 1
+        }
+        break
+      case "D":
+        if x < 4 && numPad[x+1][y] != "x"{
+          x += 1
+        }
+        break
+      case "R":
+        if y < 4 && numPad[x][y+1] != "x"{
+          y += 1
+        }
+        break
+      default:
+        break
+      }
+    }
+    code.append(numPad[x][y])
+  }
+  return code
+}
+
+
 let inputDay2 = [
   "URULLLLLRLDDUURRRULLLDURRDRDRDLURURURLDLLLLRUDDRRLUDDDDDDLRLRDDDUUDUDLDULUDLDURDULLRDDURLLLRRRLLRURLLUDRDLLRRLDDRUDULRRDDLUUUDRLDLURRRULURRDLLLDDDLUDURDDRLDDDLLRULDRUDDDLUDLURUDLLRURRUURUDLLLUUUUDDURDRDDDLDRRUDURDLLLULUDURURDUUULRULUDRUUUUDLRLUUUUUDDRRDDDURULLLRRLDURLDLDRDLLLUULLRRLLLLDRLRDRRDRRUDDLULUUDDDDRRUUDDLURLRDUUDRRLDUDLRRRLRRUUDURDRULULRDURDRRRDLDUUULRDDLRLRDLUUDDUDDRLRRULLLULULLDDDRRDUUUDDRURDDURDRLRDLDRDRULRLUURUDRLULRLURLRRULDRLRDUDLDURLLRLUDLUDDURDUURLUDRLUL",
   "LLLUUURUULDDDULRRDLRLLLLLLLLRURRDLURLUDRRDDULDRRRRRRLDURRULDDULLDDDRUUDLUDULLDLRRLUULULRULURDURLLDULURDUDLRRLRLLDULLRLDURRUULDLDULLRDULULLLULDRLDLDLDLDDLULRLDUDRULUDDRDDRLRLURURRDULLUULLDRRDRRDLDLLRDLDDUUURLUULDDRRRUULDULDDRDDLULUDRURUULLUDRURDRULDRUULLRRDURUDDLDUULLDDRLRRDUDRLRRRLDRLRULDRDRRUDRLLLDDUDLULLURRURRLUURDRLLDLLDUDLUUURRLRDDUDRLUDLLRULLDUUURDLUUUDUDULRLDLDRUUDULRDRRUDLULRLRDLDRRDDDUDLDLDLRUURLDLLUURDLDLRDLDRUDDUURLLLRDRDRRULLRLRDULUDDDLUDURLDUDLLRULRDURDRDLLULRRDLLLDUURRDUDDLDDRULRRRRLRDDRURLLRRLLL",
@@ -56,3 +102,6 @@ let inputDay2 = [
 let testInput = ["ULL", "RRDDD", "LURDL", "UUUUD"]
 assert(decodeInstructions(input: testInput) == [1,9,8,5])
 print(decodeInstructions(input: inputDay2))
+
+assert(decodeInstructionsAlphaNumPad(input: testInput) == ["5", "D", "B", "3"])
+print(decodeInstructionsAlphaNumPad(input: inputDay2))
