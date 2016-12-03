@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>AoC-Day3.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>advent of code.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -22,6 +27,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>109366ED1DF2AE77002C6CE1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>10F6EA8F1DF158F200487BA5</key>
 		<dict>
 			<key>primary</key>
