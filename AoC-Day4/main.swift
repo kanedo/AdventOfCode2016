@@ -75,6 +75,30 @@ struct Sector {
     }
     return (0, false)
   }
+  
+  func decrypt() -> String {
+    var decryptedString = ""
+    parse: for c in self.hash.characters {
+      let s = String(c)
+      switch c {
+      case "-":
+        decryptedString += " "
+        break
+      case _ where Int(s) != nil:
+        break parse
+      default:
+        guard let i = UnicodeScalar(s)?.value else {
+          break
+        }
+        let shifted = (Int(i) - 97 + self.id) % 26 + 97
+        guard let d = UnicodeScalar(shifted) else {
+          break
+        }
+        decryptedString += String(d)
+      }
+    }
+    return decryptedString
+  }
 }
 
 let tests: Dictionary<String, (Int, Bool)> = [
@@ -90,6 +114,8 @@ for test in tests{
   print("\t\(res)")
 }
 
+let testDecrypt = Sector("qzmt-zixmtkozy-ivhz-343[zimth]")
+
 do{
   let input = try String(contentsOfFile: "InputDay4.strings")
   var sum = 0
@@ -97,6 +123,10 @@ do{
     let line = String(l)
     let sector = Sector(line)
     if(sector.valid){
+      let decryptedMessage = sector.decrypt()
+      if(decryptedMessage.contains("northpole")){
+        print(sector.id, decryptedMessage)
+      }
       sum += sector.id
     }
   }
